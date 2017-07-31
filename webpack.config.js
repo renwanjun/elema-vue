@@ -1,5 +1,5 @@
 /*
-*__dirname 是node.js中的一个全部变量，它只想当前执行脚本所在的目录
+*__dirname 是node.js中的一个全部变量，它指向当前执行脚本所在的目录
 *
 */
 
@@ -15,7 +15,7 @@ module.exports={
 		// publicPath: '/assets/',
 		filename:"bundle.js"       // 打包后输出文件的文件名
 	},
-	module:{
+	module:{                      
 		loaders: [
           {
             test: /\.json$/,
@@ -26,7 +26,7 @@ module.exports={
 			  exclude:/node_modules/,  //屏蔽不需要处理的文件夹
 			  loader:"babel-loader",   //在webpack的module部分的loaders里进行配置即可
 			//   query:{
-			// 	  presets:['es2015','react']
+			// 	  presets:['es2015','react']   // 自动识别.babelrc文件中的内容
 			//   }
 		  }
 		  ,{
@@ -46,7 +46,7 @@ module.exports={
 					return [precss,autoprefixer];
 				}
 			},
-			devServer: {
+			devServer: {   //让你的浏览器监测你的代码的修改，并自动刷新修改后的结果
 				// proxy: {
 				// 	"/api/*": {
 				// 		target: "https://cnodejs.org",
@@ -62,11 +62,4 @@ module.exports={
 			}
 		})
 	],
-	// devServer:{                  //让你的浏览器监测你的代码的修改，并自动刷新修改后的结果
-	// 	contentBase:'./public',  //本地服务器所加载的页面所在的目录
-	// 	colors:true,             //终端中输出结果为彩色
-	// 	historyApiFallback:true, //不跳转
-	// 	inline:true,              //实时刷新
-	// 	hot:true
-	// }
 }
